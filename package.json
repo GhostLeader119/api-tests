@@ -1,0 +1,18 @@
+{
+  "name": "api-tests",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [
+    "api"
+  ],
+  "author": "CC",
+  "license": "ISC",
+  "dependencies": {
+    "jest": "^29.7.0",
+    "node-fetch2": "^1.6.3"
+  }
+}
