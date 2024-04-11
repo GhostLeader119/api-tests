@@ -1,0 +1,45 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api-tests
+  labels:
+    app: api-tests
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: api-tests
+  template:
+    metadata:
+      labels:
+        app: api-tests
+    spec:
+      containers:
+        - name: waheed-api
+          image: us-docker.pkg.dev/cit262-team1-project/caden-api/api-tests
+          ports:
+            - conainerPort: 3000
+          resources:
+            limits:
+              cpu: ".5"
+              memory: 500Mi
+            requests:
+              cpu: ".25"
+              memory: 250Mi
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 3000
+              scheme: HTTP
+            failureThreshold: 1
+            periodSeconds: 10
+            timeoutSeconds: 10
+          startupProbe:
+            httpGet:
+              path: /
+              port: 3000
+              scheme: HTTP
+            failureThreshold: 30
+            periodSeconds: 30
+            timeoutSeconds: 30
