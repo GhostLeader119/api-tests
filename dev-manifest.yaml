@@ -16,7 +16,7 @@ spec:
         app: api-tests
     spec:
       containers:
-        - name: waheed-api
+        - name: caden-api
           image: us-docker.pkg.dev/cit262-team1-project/caden-api/api-tests
           ports:
             - conainerPort: 3000
