@@ -1,30 +1,30 @@
----
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: api-tests
+  name: caden-api
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: api-tests
+      app: caden-api
   template:
     metadata:
       labels:
-        app: api-tests
+        app: caden-api
     spec:
       containers:
-        - name: api-tests
-          image: us-docker.pkg.dev/cit262-team1-project/caden-api/api-tests
+        - name: caden-api
+        # This image is going to be the path to the image you create in a future step
+          image: us-docker.pkg.dev/cit262-team1-project/caden-api/api-tests:latest
           ports:
-            - conainerPort: 3000
+            - containerPort: 3000
           resources:
             limits:
               cpu: ".5"
-              memory: 500Mi
+              memory: "500Mi"
             requests:
               cpu: ".25"
-              memory: 250Mi
+              memory: "250Mi"
           livenessProbe:
             httpGet:
               path: /
@@ -39,5 +39,5 @@ spec:
               port: 3000
               scheme: HTTP
             failureThreshold: 30
-            periodSeconds: 30
-            timeoutSeconds: 30
+            periodSeconds: 10
+            timeoutSeconds: 10
